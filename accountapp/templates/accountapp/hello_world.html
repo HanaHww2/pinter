@@ -8,9 +8,14 @@
         height: 3rem;
         margin: 1rem;
     }
+    .pinter_content{
+        text-align: center;
+        margin: 2rem;
+        border-radius: 2rem;
+    }
 </style>
 
-<div style="border-radius: 2rem; margin: 2rem; text-align: center;">
+<div class="pinter_content">
     <h1 class="pinter_font">
         Hello World LIST!
     </h1>
@@ -27,7 +32,7 @@
 
     {% if hello_world_list %}
         {% for hello_world in hello_world_list %}
-            <h4 class="pinter_font">
+            <h4>
                 {{ hello_world.text }}
             </h4>
         {% endfor %}

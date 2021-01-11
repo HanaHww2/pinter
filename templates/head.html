@@ -12,4 +12,25 @@
 
     <!--    -->
     <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}">
+
+    <style>
+        @font-face {
+            font-family: 'NanumBarunGothic';
+            src: url("{% static 'fonts/NanumBarunGothic.ttf' %}") format("truetype");
+        }
+        @font-face {
+            font-family: 'NanumBarunGothicBold';
+            src: url("{% static 'fonts/NanumBarunGothicBold.ttf' %}") format("truetype");
+        }
+        @font-face {
+            font-family: 'NanumBarunGothicLight';
+            src: local('NanumBarunGothicLight'),
+            url("{% static 'fonts/NanumBarunGothicLight.ttf' %}") format("truetype");
+        }
+        @font-face {
+            font-family: 'NanumBarunGothicUltraLight';
+            src: local('NanumBarunGothicUltraLight'),
+            url("{% static 'fonts/NanumBarunGothicUltraLight.ttf' %}") format("truetype");
+        }
+    </style>
 </head>
