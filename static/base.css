@@ -1,0 +1,19 @@
+
+ .pinter_font {
+    font-family: 'Source Code Pro', monospace;
+ }
+.pinter_footer_button{
+    font-size: .6rem;
+}
+.pinter_footer{
+    text-align:center;
+    margin-top: 2rem;
+}
+.pinter_footer>div>h6{
+    margin-top: 1rem;
+}
+
+.pinter_header{
+    text-align:center;
+    margin: 2rem 0;
+}
