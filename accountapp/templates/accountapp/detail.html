@@ -15,17 +15,37 @@
 
 <div class="pinter_content">
     <div>
-        <p>
-            {{ target_user.date_joined }}
-        </p>
+        {% if target_user.profile %}
+
+        <img src="{{ target_user.profile.image.url }}" alt=""
+             style="height: 10rem; width: 10rem; border-radius: 20rem; margin-bottom: 2rem;">
         <h2 style="font-weight: bold;">
-            {{ target_user.username }}
+            {{ target_user.profile.nickname }}
         </h2>
-        
+            {% if target_user == user %}
+                <a href="{% url 'profileapp:update' pk=target_user.profile.pk %}">
+                    edit
+                </a>
+            {% endif %}
+        <h5 style="margin-bottom: 3rem;">
+            {{ target_user.profile.message }}
+        </h5>
+        {% else %}
+            {% if target_user == user %}
+            <a href="{% url 'profileapp:create' %}">
+                <h2 style="font-weight: bold;">
+                    Create Profile
+                </h2>
+            </a>
+            {% endif %}
+        {% else %}
+            <h2>프로필을 생성하지 않은 회원입니다.</h2>
+        {% endif %}
+
         {% if target_user == user %}
         <a href="{% url 'accountapp:update' pk=user.pk %}">
             <p>
-                Change Info
+                Modify User Info
             </p>
         </a>
         <a href="{% url 'accountapp:delete' pk=user.pk %}">
