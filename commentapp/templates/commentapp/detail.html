@@ -1,0 +1,41 @@
+<style>
+    .pinter_comment{
+        border: 1px solid;
+        border-radius: 1rem;
+        text-align: left;
+        border-color: grey;
+        margin: 1rem;
+<!--        padding: 1rem;-->
+    }
+    .pinter_comment div{
+        margin: 1rem;
+    }
+</style>
+
+<div class="pinter_comment">
+    <div>
+        <span>
+            <strong>
+                {{ comment.writer.profile.nickname }}
+            </strong>
+        </span>
+        <span>
+            {{ comment.created_at }}
+        </span>
+        {% if comment.writer == user %}
+            <span style="text-align:right; color: skyblue;">
+            <a href="{% url 'commentapp:delete' pk=comment.pk %}">
+                Delete
+            </a>
+            </span>
+        {% endif %}
+    </div>
+
+    <div>
+        <span>
+        {{ comment.content }}
+        </span>
+
+    </div>
+    
+</div>

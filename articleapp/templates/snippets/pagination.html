@@ -1,4 +1,10 @@
-
+<style>
+    .pinter_content{
+        text-align: center;
+        max-width: 500px;
+        margin: 4rem auto;
+    }
+</style>
 <div class="pinter_content">
     {% if page_obj.has_previous %}
         <a href="{% url 'articleapp:list' %}?page={{ page_obj.previous_page_number }}"

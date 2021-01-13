@@ -39,7 +39,7 @@ SECRET_KEY = env('SECRET_KEY') # environ 라이브러리 이용하여 따로 암
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -55,6 +55,8 @@ INSTALLED_APPS = [
     'accountapp',
     'profileapp',
     'articleapp',
+    'commentapp',
+
 ]
 
 MIDDLEWARE = [

@@ -22,7 +22,7 @@ class ProfileCreateView(CreateView):
         temp_profile.save()
         return super().form_valid(form)
     def get_success_url(self):
-        return reverse('acoountapp:detail', kwargs={'pk': self.object.user.pk})
+        return reverse('accountapp:detail', kwargs={'pk': self.object.user.pk})
 
 @method_decorator(profile_authenticated_required, 'get')
 @method_decorator(profile_authenticated_required, 'post')
