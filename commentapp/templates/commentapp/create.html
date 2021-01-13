@@ -27,7 +27,7 @@
                 login
             </a>
         {% endif %}
-
+        <input type="hidden" name="project_pk" value="{{ project.pk }}">
         <input type="hidden" name="article_pk" value="{{ article.pk }}">
     </form>
 </div>

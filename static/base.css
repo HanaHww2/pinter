@@ -13,11 +13,33 @@
 }
 .pinter_header{
     text-align:center;
-    margin: 2rem 0;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+.pinter_header h1 {
+    margin-bottom: 1rem;
+}
+.pinter_header a {
+    margin: 1rem;
 }
 
 @media screen and (max-width:500px) {
     html {
         font-size: 12px;
     }
+}
+
+a {
+    color: grey;
+    text-decoration: none;
+
+}
+a:hover {
+    color:black;
+    font-weight: bold;
+    text-decoration: none;
+}
+a h6:hover {
+
+    font-weight: bold;
 }

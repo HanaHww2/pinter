@@ -7,7 +7,7 @@
     text-align: right;
     margin-right: 2rem;
     }
-    .container {
+        .container {
     padding: 0;
     margin: 0, auto;
     }
@@ -20,37 +20,32 @@
     align-items: center;
     border-radius: 1rem;
     }
-    .container a {
-    width: 45%;
-    max-width: 220px;
-    }
     .container img {
-      width: 100%;
+      width: 7rem;
+      height: 7rem;
+      object-fit: cover;
       border-radius: 1rem;
     }
 </style>
 
 <div class="create-btn">
-    <a href="{% url 'articleapp:create' %}" class="btn btn-dark rounded-pill mt-3 mb-5">
+    <a href="{% url 'projectapp:create' %}" class="btn btn-dark rounded-pill mt-3 mb-5">
         create New
     </a>
 </div>
 
-<!--  <div>-->
-<!-- 임시 페이지용 이미지     <img src="https://picsum.photos/200/300">-->
-<!--  </div>-->
-{% if article_list %}
+{% if project_list %}
     <div class="container">
-        {% for article in article_list %}
-            <a href="{% url 'articleapp:detail' pk=article.pk %}">
-                {% include 'snippets/card.html' with article=article %}
+        {% for project in project_list %}
+            <a href="{% url 'projectapp:detail' pk=project.pk %}">
+                {% include 'snippets/project_card.html' with project=project %}
             </a>
         {% endfor %}
     </div>
-    <script src="{% static 'js/magicgrid.js' %}"></script>
+
 {% else %}
     <div class="text-center">
-        <h1>No Article Yet!</h1>
+        <h1>No Project Yet!</h1>
     </div>
 {% endif %}
 

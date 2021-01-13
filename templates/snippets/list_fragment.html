@@ -1,30 +1,26 @@
-{% extends 'base.html' %}
-
-{% block content %}
 {% load static %}
 <style>
     .create-btn {
     text-align: right;
-    margin-right: 2rem;
+    margin-right: 4rem;
     }
+
     .container {
     padding: 0;
     margin: 0, auto;
     }
     .container div {
-<!--    width: 200px;-->
-<!--    height: 500px;-->
-<!--    background-color: antiquewhite;-->
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 1rem;
+
     }
     .container a {
-    width: 45%;
     max-width: 220px;
+    width: 45%;
     }
-    .container img {
+    .container img{
       width: 100%;
       border-radius: 1rem;
     }
@@ -43,11 +39,15 @@
     <div class="container">
         {% for article in article_list %}
             <a href="{% url 'articleapp:detail' pk=article.pk %}">
-                {% include 'snippets/card.html' with article=article %}
+                <div>
+                    <img src="{{ article.image.url }}" alt="">
+                </div>
             </a>
+
         {% endfor %}
     </div>
     <script src="{% static 'js/magicgrid.js' %}"></script>
+
 {% else %}
     <div class="text-center">
         <h1>No Article Yet!</h1>
@@ -56,4 +56,3 @@
 
 {% include 'snippets/pagination.html' with page_obj=page_obj %}
 
-{% endblock %}

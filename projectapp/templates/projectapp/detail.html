@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+
+<style>
+    .pinter_content{
+        text-align: center;
+        max-width: 700px;
+        margin: 2rem auto;
+    }
+</style>
+
+<div class="pinter_content">
+        <h1>
+            {{ target_project.title }}
+        </h1>
+        <h4>
+<!--            written by {{ target_project.writer.profile.nickname }}-->
+        </h4>
+<!--    {% if target_project.writer == user %}-->
+    <div>
+        <a href="{% url 'projectapp:update' pk=target_project.pk %}"
+        class="btn btn-primary rounded-pill">
+            Edit
+        </a>
+        <a href="{% url 'projectapp:delete' pk=target_project.pk %}"
+        class="btn btn-primary rounded-pill">
+            Delete
+        </a>
+    </div>
+<!--    {% endif %}-->
+    <div>
+        <img src="{{ target_project.image.url }}" alt=""
+             style="height: 10rem; width: 10rem; border-radius: 20rem; margin: 2rem; object-fit: cover;">
+        <p>
+            {{ target_project.description }}
+        </p>
+    </div>
+</div>
+
+{% include 'snippets/list_fragment.html' with article_list=object_list %}
+
+{% for comment in target_project.comment.all %}
+    {% include 'commentapp/detail.html' with comment=comment %}
+{% endfor %}
+
+{% include 'commentapp/create.html' with project=target_project %}
+
+{% endblock %}
