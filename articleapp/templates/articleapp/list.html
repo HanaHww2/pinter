@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<style>
+    .pinter_content{
+        text-align: center;
+        max-width: 500px;
+        margin: 4rem auto;
+    }
+    .create-btn {
+    text-align: right;
+    margin-right: 2rem;
+    }
+    .container div {
+      width: 200px;
+<!--      height: 500px;-->
+      background-color: antiquewhite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 1rem;
+    }
+    .container img {
+      width: 100%;
+      border-radius: 1rem;
+    }
+</style>
+
+<div class="create-btn">
+    <a href="{% url 'articleapp:create' %}" class="btn btn-dark rounded-pill mt-3 mb-5">
+        create New
+    </a>
+</div>
+
+<!--  <div>-->
+<!-- 임시 페이지용 이미지     <img src="https://picsum.photos/200/300">-->
+<!--  </div>-->
+{% if article_list %}
+    <div class="container">
+        {% for article in article_list %}
+            <a href="{% url 'articleapp:detail' pk=article.pk %}">
+                {% include 'snippets/card.html' with article=article %}
+            </a>
+        {% endfor %}
+    </div>
+    <script src="{% static 'js/magicgrid.js' %}"></script>
+{% else %}
+    <div class="text-center">
+        <h1>No Articles Yet!</h1>
+    </div>
+{% endif %}
+
+{% include 'snippets/pagination.html' with page_obj=page_obj %}
+
+{% endblock %}

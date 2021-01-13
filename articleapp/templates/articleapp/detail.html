@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+
+<style>
+    label{
+        margin: .5rem;
+    }
+    .pinter_content{
+        text-align: center;
+        max-width: 700px;
+        margin: 2rem auto;
+    }
+</style>
+
+<div class="pinter_content">
+        <h1>
+            {{ target_article.title }}
+        </h1>
+        <h4>
+            written by {{ target_article.writer.profile.nickname }}
+        </h4>
+    {% if target_article.writer == user %}
+    <div>
+        <a href="{% url 'articleapp:update' pk=target_article.pk %}"
+        class="btn btn-primary rounded-pill col-2">
+            Edit
+        </a>
+        <a href="{% url 'articleapp:delete' pk=target_article.pk %}"
+        class="btn btn-primary rounded-pill col-2">
+            Delete
+        </a>
+    </div>
+    {% endif %}
+    <div>
+        <img src="{{ target_article.image.url }}" style="width: 80%;" alt="" class="m-4">
+        <p>
+            {{ target_article.content }}
+        </p>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -32,14 +32,14 @@
         </h5>
         {% else %}
             {% if target_user == user %}
-            <a href="{% url 'profileapp:create' %}">
-                <h2 style="font-weight: bold;">
-                    Create Profile
-                </h2>
-            </a>
+                <a href="{% url 'profileapp:create' %}">
+                    <h2 style="font-weight: bold;">
+                        Create Profile
+                    </h2>
+                </a>
+            {% else %}
+                <h2>프로필을 생성하지 않은 회원입니다.</h2>
             {% endif %}
-        {% else %}
-            <h2>프로필을 생성하지 않은 회원입니다.</h2>
         {% endif %}
 
         {% if target_user == user %}
