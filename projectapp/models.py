@@ -9,3 +9,6 @@ class Project(models.Model):
     image = models.ImageField(upload_to='project/', null=False)
     description = models.CharField(max_length=200, null=True)
     created_date = models.DateField(auto_created=True, null=True)
+
+    def __str__(self):
+        return f'{self.title}' # {self.pk}
