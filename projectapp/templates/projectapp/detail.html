@@ -6,36 +6,49 @@
     .pinter_content{
         text-align: center;
         max-width: 700px;
-        margin: 2rem auto;
+        margin: 1rem auto;
     }
 </style>
 
 <div class="pinter_content">
+     <div>
+        <img src="{{ target_project.image.url }}" alt=""
+             style="height: 10rem; width: 10rem; border-radius: 20rem; margin: 1rem; object-fit: cover;">
         <h1>
             {{ target_project.title }}
         </h1>
-        <h4>
-<!--            written by {{ target_project.writer.profile.nickname }}-->
-        </h4>
-<!--    {% if target_project.writer == user %}-->
-    <div>
-        <a href="{% url 'projectapp:update' pk=target_project.pk %}"
-        class="btn btn-primary rounded-pill">
-            Edit
-        </a>
-        <a href="{% url 'projectapp:delete' pk=target_project.pk %}"
-        class="btn btn-primary rounded-pill">
-            Delete
-        </a>
-    </div>
-<!--    {% endif %}-->
-    <div>
-        <img src="{{ target_project.image.url }}" alt=""
-             style="height: 10rem; width: 10rem; border-radius: 20rem; margin: 2rem; object-fit: cover;">
-        <p>
+         <p>
             {{ target_project.description }}
         </p>
     </div>
+
+    <di class="text-center">
+        {% if user.is_authenticated %}
+            {% if not subscribe %}
+                <a href="{% url 'subscribeapp:subscribe' %}?project_pk={{ target_project.pk }}"
+                class="btn btn-primary rounded-pill px-4">
+                    Subscribe
+                </a>
+            {% else %}
+                <a href="{% url 'subscribeapp:subscribe' %}?project_pk={{ target_project.pk }}"
+                    class="btn btn-dark rounded-pill px-4">
+                    Unsubscribe
+                </a>
+            {% endif %}
+        {% endif %}
+    </div>
+<!--    {% if target_project.writer == user %}-->
+<!--    <div>-->
+<!--        <a href="{% url 'projectapp:update' pk=target_project.pk %}"-->
+<!--        class="btn btn-primary rounded-pill">-->
+<!--            Edit-->
+<!--        </a>-->
+<!--        <a href="{% url 'projectapp:delete' pk=target_project.pk %}"-->
+<!--        class="btn btn-primary rounded-pill">-->
+<!--            Delete-->
+<!--        </a>-->
+<!--    </div>-->
+<!--    {% endif %}-->
 </div>
 
 {% include 'snippets/list_fragment.html' with article_list=object_list %}

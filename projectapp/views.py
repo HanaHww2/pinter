@@ -13,6 +13,7 @@ from commentapp.forms import CommentCreateForm
 from projectapp.decorators import project_authenticated_required
 from projectapp.forms import ProjectCreateForm
 from projectapp.models import Project
+from subscribeapp.models import Subscribe
 
 
 @method_decorator(login_required, 'post')
@@ -64,5 +65,12 @@ class ProjectDetailView(DetailView, MultipleObjectMixin, FormMixin):
     paginate_by = 12 # 16
 
     def get_context_data(self, **kwargs):
+        project = self.object
+        user = self.request.user
+        if user.is_authenticated:
+            subscribe = Subscribe.objects.filter(user=user, project=project)
+
         object_list = Article.objects.filter(project=self.get_object())
-        return super(ProjectDetailView, self).get_context_data(object_list=object_list, **kwargs)
+        return super(ProjectDetailView, self).get_context_data(object_list=object_list,
+                                                               subscribe=subscribe,
+                                                               **kwargs)
