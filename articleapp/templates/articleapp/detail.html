@@ -21,22 +21,24 @@
             written by {{ target_article.writer.profile.nickname }}
         </h4>
     {% if target_article.writer == user %}
-    <div>
-        <a href="{% url 'articleapp:update' pk=target_article.pk %}"
-        class="btn btn-primary rounded-pill">
-            Edit
-        </a>
-        <a href="{% url 'articleapp:delete' pk=target_article.pk %}"
-        class="btn btn-primary rounded-pill">
-            Delete
-        </a>
-    </div>
+        <div style="text-align: right; padding: 0 5rem;">
+            <a href="{% url 'articleapp:update' pk=target_article.pk %}"
+            class="btn btn-primary rounded-pill">
+                Edit
+            </a>
+            <a href="{% url 'articleapp:delete' pk=target_article.pk %}"
+            class="btn btn-primary rounded-pill">
+                Delete
+            </a>
+        </div>
     {% endif %}
     <div>
-        <img src="{{ target_article.image.url }}" style="width: 80%;" alt="" class="m-4">
-        <p>
-            {{ target_article.content }}
-        </p>
+        <img src="{{ target_article.image.url }}" alt="" class="m-4" style="width:80%">
+
+            <p style ="text-align: left; padding-left: 2rem; padding-right: 2rem;">
+                {{ target_article.content | safe}}
+            </p>
+
     </div>
 </div>
 

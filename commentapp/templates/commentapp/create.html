@@ -8,20 +8,26 @@
     .pinter_comment{
         text-align: center;
         max-width: 700px;
-        margin: 2rem auto;
+        margin: 1rem auto;
+    }
+    .form-group label{
+    display:none;
+    }
+    .form-group textarea {
+    max-height: 6rem;
     }
 </style>
 
 <div class="pinter_comment">
-    <div class="mb-4">
-        <h4>Comment</h4>
+    <div class="mb-1">
+        <h5 style="text-align: left">Comment</h5>
     </div>
     <form action="{% url 'commentapp:create' %}" method="post">
         {% csrf_token %}
         {% bootstrap_form form %}
 
         {% if user.is_authenticated %}
-            <input type="submit" class="btn btn-dark rounded-pill col-2 mt-3">
+            <input type="submit" class="btn btn-dark rounded-pill col-2 mt-2 mb-2">
         {% else %}
             <a href="{% url 'accountapp:login' %}?next={{ request.path }}" class="btn btn-dark rounded-pill col-2 mt-3">
                 login
